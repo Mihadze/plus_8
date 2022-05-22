@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    vector <int> number;
+    string s;
+    cin >> s;
+
+    for(int i=0; i < s.size(); i++) number.push_back(s[i]);
+    int doub;
+    for(int j=0; j < number.size(); j++){
+        if(number[j] == '.') doub = j;
+    }
+    double your_double = 0;
+    for(int left = 1; left <= doub; left++){
+        your_double+= (number[left - 1] - 48) * pow(10,doub - left);
+    }
+    int right = 1;
+    while (doub + right < number.size()){
+        your_double+= (number[doub + right] - 48) * pow(10,- right);
+        right++;
+    }
+
+    cout << your_double;
+    return 0;
+}
